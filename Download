@@ -1,0 +1,57 @@
+import selenium, requests, time
+from selenium import webdriver
+
+#link to start with:
+url = "insert your full link here "
+
+#this will download first 3 instances:
+for n in range(3):
+
+    #initial setup Selenium:
+    chrome = "location of chrome driver here\\chromedriver.exe"
+    browser = webdriver.Chrome()
+    browser.get(url)
+    browser.fullscreen_window()  #going full screen
+
+
+    #accept cookies:
+    time.sleep(5)
+    cookies = browser.find_element_by_xpath('cookies html xpath here')
+    cookies.click()
+
+
+    #list COMMERCIALLY FREE:
+    time.sleep(5)
+    commercially_free = browser.find_element_by_xpath('there was a commercially free section xpath')
+    commercially_free.click()
+
+
+
+    #save ALL cathegories in a list and click the first one:
+    time.sleep(5)
+    cathegories_listed = browser.find_elements_by_xpath('and also cathegories, we chose the first one')
+    time.sleep(3)
+    cathegories_listed[0].click()
+
+
+    #download here:
+    time.sleep(5)
+    downloadFont = browser.find_elements_by_link_text('Download')
+    time.sleep(3)
+    downloadFont[n].click()
+
+
+    #finish connection
+    time.sleep(3)
+    browser.close()
+
+    print('round: ', n) #we keep an eye on progress here
+
+
+
+
+
+
+
+#and when done more info on progress:
+print('\nselenium working well')
